@@ -22,16 +22,10 @@ i_expr: variable ASSIGN NUMBER
 variable: DATATYPE IDENTIFIER
         | IDENTIFIER
         ;
-initialization: DATATYPE expr
-              | expr
-              ;
-expr: IDENTIFIER ASSIGN NUMBER
-    | IDENTIFIER ASSIGN IDENTIFIER
-    ;
 %%
 
 void yyerror(const char *s) {
-  fprintf(stderr, "Error: %s\n", s);
+  fprintf(stderr, "Invalid for loop\n");
 }
 int main(){
   printf("Enter the for loop: ");

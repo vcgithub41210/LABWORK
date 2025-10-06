@@ -1,7 +1,7 @@
 if main(){
     int res = 0;
     if (res == 0){
-        res=3;
+        res *= 3;
       }
       return 0;
   }

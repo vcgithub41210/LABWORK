@@ -8,7 +8,7 @@
 
 %%
 
-start : letter s {printf("Valid variable");}
+start : letter s {printf("Valid variable\n");}
       ;
 s :     letter s 
     |   digit s
