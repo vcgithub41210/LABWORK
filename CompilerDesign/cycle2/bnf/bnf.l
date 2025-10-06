@@ -1,9 +1,15 @@
 %{
- #include <stdio.h>
+#include "bnf.tab.h"
 %}
-%option noyywrap
 
 %%
-[0-9]+  {return NUMBER;}
-[a-zA-Z][a-zA-Z0-9]* {return IDENTIFIER;}
+
+[0-9]+      { yylval.num = atoi(yytext); return NUMBER; }
+[ \t]+      ;            /* ignore spaces and tabs */
+\n          ;            /* ignore newlines */
+.           { return yytext[0]; }   /* return single-character operators like + - * / ( ) */
+
 %%
+
+int yywrap(void) { return 1; }
+
