@@ -5,6 +5,8 @@
 // global variables
 char sym[5], nfastate[5], symbols[100][5];
 int curr_state_count, res_count, symbol_count = 0;
+char nfa_final_states[MAX_STATES][5];
+int nfa_final_count = 0;
 
 struct NFATransition {
   char from[5], symbol[5], to[5];
@@ -38,6 +40,16 @@ void add_to_res(char *state, char *symbol, char res[][5], int *res_count) {
       strcpy(res[(*res_count)++], nfa_trans[i].to);
     }
   }
+}
+int is_dfa_final(struct DFAState dfa_state) {
+  for (int i = 0; i < dfa_state.state_count; i++) {
+    for (int j = 0; j < nfa_final_count; j++) {
+      if (strcmp(dfa_state.state[i], nfa_final_states[j]) == 0) {
+        return 1; // found an NFA final state inside this DFA state
+      }
+    }
+  }
+  return 0;
 }
 
 void find_nfa_transitions(char *filename) {
@@ -109,10 +121,10 @@ void print_transitions() {
     printf("{ ");
     for (int j = 0; j < dfa_trans[i].from_count; j++)
       printf("%s ", dfa_trans[i].from[j]);
-    printf("} --%s--> { ", dfa_trans[i].symbol);
+    printf("} --%s--> {", dfa_trans[i].symbol);
     for (int j = 0; j < dfa_trans[i].to_count; j++)
-      printf("%s ", dfa_trans[i].to[j]);
-    printf("}\n");
+      printf(" %s", dfa_trans[i].to[j]);
+    printf(" }\n");
   }
 }
 
@@ -129,9 +141,7 @@ void find_dfa_transistions(char *start_state) {
         strcpy(nfastate, dfa_states[curr_state].state[st]);
         add_to_res(nfastate, sym, res, &res_count);
       }
-      if (res_count == 0)
-        continue;
-      if (state_exists(res, res_count) == -1) {
+      if (state_exists(res, res_count) == -1 && res_count > 0) {
         for (int r = 0; r < res_count; r++)
           strcpy(dfa_states[dfa_state_count].state[r], res[r]);
         dfa_states[dfa_state_count].state_count = res_count;
@@ -152,11 +162,36 @@ int main() {
   find_nfa_transitions(filename);
   printf("Enter the start state of the NFA: ");
   char start_state[5];
+  char fin_state[5];
   scanf("%s", start_state);
   // check if start state is valid
   if (search_state(start_state) == -1) {
     printf("Invalid start state\n");
     exit(0);
   }
+  printf("Enter number of final states in NFA: ");
+  scanf("%d", &nfa_final_count);
+
+  printf("Enter the final states: ");
+  for (int i = 0; i < nfa_final_count; i++) {
+    scanf("%s", fin_state);
+    if (search_state(fin_state) == -1) {
+      printf("Invalid final state: %s\n", fin_state);
+      exit(0);
+    } else {
+      strcpy(nfa_final_states[i], fin_state);
+    }
+  }
+
   find_dfa_transistions(start_state);
+  printf("\nDFA Final States:\n");
+  for (int i = 0; i < dfa_state_count; i++) {
+    if (is_dfa_final(dfa_states[i])) {
+      printf("{ ");
+      for (int j = 0; j < dfa_states[i].state_count; j++) {
+        printf("%s ", dfa_states[i].state[j]);
+      }
+      printf("}\n");
+    }
+  }
 }

@@ -1,46 +1,40 @@
 %{
-
 #include <stdio.h>
-#include <stdlib.h>
-
-int yylex(void);
+#include <string.h>
+int yylex();
 void yyerror(const char *s);
-
 %}
-
-%token FOR LPAREN RPAREN COMPARATOR SEMICOLON ASSIGN LT GT LE GE EQ INC DEC
-%token ID NUMBER
-
+%token FOR RPAREN LPAREN NUMBER IDENTIFIER SEMICOLON DATATYPE UPDATE ASSIGN COMPARE UNARY_OP
 %%
-
-stmt : FOR LPAREN expr_opt SEMICOLON expr_opt SEMICOLON expr_opt RPAREN
-       { printf("Valid FOR statement syntax\n"); }
+start: FOR LPAREN i_expr SEMICOLON c_expr SEMICOLON u_expr RPAREN { printf("Valid for loop\n");return 0; }
      ;
+c_expr: IDENTIFIER COMPARE IDENTIFIER
+      | IDENTIFIER COMPARE NUMBER
+      ;
 
-expr_opt : /* empty */
-         | expr
-         ;
+u_expr: IDENTIFIER UPDATE NUMBER
+      | IDENTIFIER UPDATE IDENTIFIER
+      | IDENTIFIER UNARY_OP
 
-expr : ID ASSIGN expr
-     | ID
-     | NUMBER
-     | expr LT expr
-     | expr GT expr
-     | expr LE expr
-     | expr GE expr
-     | expr EQ expr
-     | ID INC
-     | ID DEC
-     ;
-
+i_expr: variable ASSIGN NUMBER
+      | variable ASSIGN IDENTIFIER
+      ;
+variable: DATATYPE IDENTIFIER
+        | IDENTIFIER
+        ;
+initialization: DATATYPE expr
+              | expr
+              ;
+expr: IDENTIFIER ASSIGN NUMBER
+    | IDENTIFIER ASSIGN IDENTIFIER
+    ;
 %%
 
 void yyerror(const char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+  fprintf(stderr, "Error: %s\n", s);
 }
-
-int main() {
-    printf("Enter a FOR statement:\n");
-    yyparse();
-    return 0;
+int main(){
+  printf("Enter the for loop: ");
+  yyparse();
+  return 0;
 }

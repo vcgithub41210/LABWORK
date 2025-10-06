@@ -151,37 +151,34 @@ int main() {
     printf("}\n");
   }
 
-  printf("\nEquivalent NFA Transitions (without epsilon):\n");
-  for (int i = 0; i < count; i++) {
-    char symbols[20][5];
-    int s_count = 0;
-
-    // collect all input symbols (non-epsilon)
-    for (int t = 0; t < t_count; t++) {
-      if (search_state(trans[t].from) == i) {
-        int found = 0;
-        for (int k = 0; k < s_count; k++) {
-          if (strcmp(symbols[k], trans[t].symbol) == 0) {
-            found = 1;
-            break;
-          }
-        }
-        if (!found)
-          strcpy(symbols[s_count++], trans[t].symbol);
+  char all_symbols[20][5];
+  int all_scount = 0;
+  for (int t = 0; t < t_count; t++) {
+    int found = 0;
+    for (int k = 0; k < all_scount; k++) {
+      if (strcmp(all_symbols[k], trans[t].symbol) == 0) {
+        found = 1;
+        break;
       }
     }
+    if (!found) {
+      strcpy(all_symbols[all_scount++], trans[t].symbol);
+    }
+  }
+  printf("\nEquivalent NFA Transitions (without epsilon):\n");
+  for (int i = 0; i < count; i++) {
 
     // compute transitions
-    for (int k = 0; k < s_count; k++) {
+    for (int k = 0; k < all_scount; k++) {
       char result[50][5];
       int rcount;
-      move_closure(i, symbols[k], result, &rcount);
+      move_closure(i, all_symbols[k], result, &rcount);
 
-      printf("%s --%s--> {", recorded_states[i].state, symbols[k]);
+      printf("%s --%s--> { ", recorded_states[i].state, all_symbols[k]);
       for (int r = 0; r < rcount; r++) {
         printf("%s%s", result[r], r + 1 == rcount ? "" : ", ");
       }
-      printf("}\n");
+      printf(" }\n");
     }
   }
 }

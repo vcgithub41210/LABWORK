@@ -40,24 +40,30 @@
       know about them.  */
    enum yytokentype {
      FOR = 258,
-     PARANTHESIS = 259,
-     OPERAND = 260,
-     OPERATOR = 261,
-     COMMA = 262,
+     RPAREN = 259,
+     LPAREN = 260,
+     NUMBER = 261,
+     IDENTIFIER = 262,
      SEMICOLON = 263,
-     NEWLINE = 264,
-     CURLYBRACE = 265
+     DATATYPE = 264,
+     UPDATE = 265,
+     ASSIGN = 266,
+     COMPARE = 267,
+     UNARY_OP = 268
    };
 #endif
 /* Tokens.  */
 #define FOR 258
-#define PARANTHESIS 259
-#define OPERAND 260
-#define OPERATOR 261
-#define COMMA 262
+#define RPAREN 259
+#define LPAREN 260
+#define NUMBER 261
+#define IDENTIFIER 262
 #define SEMICOLON 263
-#define NEWLINE 264
-#define CURLYBRACE 265
+#define DATATYPE 264
+#define UPDATE 265
+#define ASSIGN 266
+#define COMPARE 267
+#define UNARY_OP 268
 
 
 
