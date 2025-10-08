@@ -1,0 +1,942 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{adjustbox}
+% \usepackage{biblatex}
+% \addbibresource{biblio.bib}
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+% Custom font sizes for better readability
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamertemplate{footline}{}
+
+\title{Web Agent for Task Automations}
+\author{
+Group 13\\
+Hridhya M.S (22CSB25 MDL22CS098)\\
+Vinay Chandrasekhar (22CSB63 MDL22CS190)\\
+Wafaa Farook (22CSB65 MDL22CS194)\\
+Yadunandan V (22CSB66 MDL22CS195)\\
+}
+\institute{Model Engineering College}
+\date{4 August 2025}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Table of Contents (Part 1)}
+\tableofcontents[sections=1-9] % Adjust the range to show the first part
+\end{frame}
+
+% Second part of the Table of Contents
+\begin{frame}
+\frametitle{Table of Contents (Part 2)}
+\tableofcontents[sections=10-13] % Adjust the range to show the remaining sections
+\end{frame}
+\section{Introduction}
+
+\begin{frame}
+\centering
+\Huge \textbf{Introduction}
+\end{frame}
+
+\begin{frame}{Introduction}
+\normalsize
+\begin{itemize}
+  \item Traditional rule-based automation struggles with dynamic and evolving websites.
+  \item We introduce an AI-powered agent designed to automate repetitive web tasks intelligently.
+  \item This system adapts to changing layouts and element structures in real time.
+  \item By combining decision-making with automation, this ensures robust and reliable task execution.
+  \item The modular architecture allows easy integration across diverse web environments.
+  \item The goal is to build resilient and adaptive web agents suitable for real-world applications.
+\end{itemize}
+\end{frame}
+
+
+
+
+\section{Why Web Agent for Task Automation?}
+
+\begin{frame}
+\centering
+\Huge \textbf{Why Web Agent for Task Automation?}
+\end{frame}
+
+\begin{frame}{Why Web Agent for Task Automation?}
+\begin{itemize}
+  \item Traditional automation tools depend on brittle, rule-based scripts that often break when websites change layout or structure.
+  \item The system uses language models to understand user instructions and convert them into real-time browser actions through an orchestrated agent setup.
+  \item Tasks like form filling, data collection, and navigation are simplified using natural language prompts—reducing the need for manual scripting.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{How Collaborative Agents Enable Real-World Automation}
+\begin{itemize}
+  \item The architecture consists of specialized agents for different roles: HTML cleanup, XPath generation, DOM reasoning, and interaction handling.
+  \item An orchestrator coordinates agent output using a chain-of-thought simulation—guiding the task step by step.
+  \item A vector database stores page structure and element paths, enabling rapid retrieval and reuse during navigation or task retries.
+\end{itemize}
+\end{frame}
+
+
+\section{Features}
+
+\begin{frame}
+\centering
+\Huge \textbf{Features}
+\end{frame}
+
+\begin{frame}{Core Features}
+\textbf{Web Task Automation}
+\begin{itemize}
+  \item Perform end-to-end actions like form filling and data submission.
+  \item Adapt to dynamic elements and changing layouts.
+\end{itemize}
+
+\textbf{HTML Parsing \& XPath Handling}
+\begin{itemize}
+  \item Clean up DOM structure, removing hidden and irrelevant tags.
+  \item Generate stable XPath references for precise targeting.
+\end{itemize}
+
+\textbf{Data Extraction}
+\begin{itemize}
+  \item Extract structured and semantic content from any page.
+  \item Use LLMs to label fields like price, title, and links.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{System Intelligence \& Scalability}
+\textbf{Agent Collaboration}
+\begin{itemize}
+  \item Use specialized agents for parsing, reasoning, and execution.
+  \item Coordinate via an orchestrator using CoT-like logic.
+\end{itemize}
+
+\textbf{Reusable Knowledge}
+\begin{itemize}
+  \item Store XPath and semantic mappings in a vector database.
+  \item Retrieve prior knowledge for faster repeat interactions.
+\end{itemize}
+
+\textbf{Cross-Domain Applicability}
+\begin{itemize}
+  \item Works on e-commerce, forms, portals, and dashboards.
+  \item No site-specific tuning required.
+\end{itemize}
+\end{frame}
+
+
+\section{Proposed Solution}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Proposed Solution}
+"This project develops an AI-powered Web Agent for Automating Job Applications using a Hybrid Multi-Agent Framework, LLM reasoning, and browser automation tools (Playwright/Selenium). 
+\\
+The system intelligently searches job portals, matches user profiles with suitable jobs, fills application forms, uploads resumes, and tracks application statuses. 
+\\
+By automating these repetitive tasks, the solution saves time, reduces human errors, and increases the chances of timely job applications, ensuring efficient and effective job search management."
+\end{frame}
+
+%------------------------------------------------
+\section{Novelty of the Project}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Novelty of Project}
+    \textbf{Novelty}
+    \begin{itemize}
+        \item Hybrid Multi-Agent Architecture for automated job search, application, and tracking
+        \item LLM-based reasoning to understand job descriptions and match user profiles
+        \item Semantic matching of resumes with job requirements
+        \item Automated interaction with dynamic job portals for form filling and submission
+        \item Modular design for scalability across multiple job portals
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Literature Survey}
+
+\begin{frame}
+\centering
+\Huge \textbf{Literature Survey}
+\end{frame}
+
+
+\begin{frame}{A Survey of WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation Models }
+\large\textbf{Liangbo Ning et al.}
+\normalsize
+\begin{itemize}
+  \item Comprehensive survey of WebAgents that leverage Large Foundation Models (LFMs) for automating web tasks.
+  \item Reviews existing research across three key dimensions: architectures, training methodologies, and trustworthiness.
+  \item Explores how LFMs with billions of parameters can be utilized to create AI agents that handle repetitive web tasks autonomously.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Enhancing AI Systems with Agentic Workflows 
+Patterns in Large Language Model    }
+\large\textbf{Singh, A., et al.}
+
+\normalsize
+\begin{itemize}
+  \item Introduces agentic workflows: reflection, planning, tool use, and collaboration.
+  \item Boosts LLM autonomy through iterative, self-improving patterns.
+  \item Case study: multi-agent travel planner built with Langchain.
+  \item Positions agentic design as a step toward AGI.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{WebSurfer: Enhancing LLM Agents with Web-Wise
+ Feedback for Web Navigation }
+\large\textbf{Hu, D., et al.}
+
+\normalsize
+\begin{itemize}
+  \item LLM agent that filters HTML, retrieves examples, and learns from feedback.
+  \item Selects top-k relevant elements to reduce noise per task step.
+  \item Retrieves and ranks exemplars for better in-context learning.
+  \item Uses web-wise feedback to improve decisions without retraining.
+  \item Outperforms baselines on Mind2Web across tasks and domains.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{RealWeb: A Benchmark for Universal Instruction
+ Following in Realistic Web Services Navigation }
+\large\textbf{Bolin Zhang et al.}
+
+\normalsize
+\begin{itemize}
+  \item Introduces RealWeb — the first Chinese multimodal benchmark for web service navigation on real websites.
+  \item Covers 40 websites, 110 pages, and 11,739 instructions, without relying on human demonstrations.
+  \item Screenshots are annotated with key action zones to support visual interaction.
+  \item Proposes WeServe, a multimodal agent combining vision and text, achieving 68.6\% success on real-world tasks.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Agent-E: From Autonomous Web Navigation to Foundational Design Principles in Agentic Systems }
+\large\textbf{Tamer Abuelsaad et al.}
+
+\normalsize
+\begin{itemize}
+  \item Proposes Agent-E — a novel web agent with architectural innovations like hierarchical control and DOM denoising.
+  \item Introduces “change observation” to guide actions based on evolving webpage states.
+  \item Outperforms prior text and multimodal agents on the WebVoyager benchmark by 10–30\%.
+  \item Distills learnings into foundational design principles for building scalable agentic systems.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Easier Web Navigation Using Intent 
+Classification, Web Scraping and NLP Approaches  }
+\large\textbf{Bhargava, R., Shah, N., et al.}
+
+\normalsize
+\begin{itemize}
+  \item Presents a lightweight NLUI system using voice/text queries for web navigation.
+  \item Classifies intent (99.1\% accuracy) and scrapes content via Selenium and BeautifulSoup.
+  \item Uses fine-tuned BERT for QA and summarization.
+  \item Effective for product sites; limited by scope, BERT size, and scraper reliability.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{WebNav: An Intelligent Agent for Voice-Controlled
+ Web Navigation}
+\large\textbf{Srinivasan, T., Patapati, S.}
+
+\normalsize
+\begin{itemize}
+  \item Multi-module voice agent for visually impaired web users.
+  \item Uses ReAct-style pipeline: reasoning, planning, and action modules.
+  \item Dynamic browser extension enables element labeling for voice commands.
+  \item Integrates generative models for speech, reasoning, and feedback.
+  \item Faces challenges with ambiguity and complex page layouts.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Dual-View Visual Contextualization for Web Navigation }
+\large\textbf{Jihyung Kil et al.}
+
+\normalsize
+\begin{itemize}
+  \item Combines HTML structure with visual cues from screenshots for web navigation.
+  \item Uses spatially nearby elements to provide richer context for each action.
+  \item Outperforms baselines on the Mind2Web dataset across multiple generalization tasks.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue}
+\large\textbf{Xing Han L\`u et al.}
+
+\normalsize
+\begin{itemize}
+  \item Introduces a 100K-turn benchmark across 155 real-world websites.
+  \item Agents follow user instructions using actions like \texttt{click}, \texttt{textinput}, and \texttt{say}.
+  \item Uses retrieval-style pruning to help models focus on relevant HTML parts.
+  \item Finetuned smaller models outperform GPT-4V but lack generalization to new sites.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Literature Survey}
+\adjustbox{width=\textwidth,center}{\tiny
+\begin{tabular}{|p{1.2cm}|p{1cm}|p{2.3cm}|p{1.7cm}|p{1.7cm}|p{1.8cm}|}
+\hline
+\textbf{Title} & \textbf{Authors} & \textbf{Key Findings} & \textbf{Advantages} & \textbf{Disadvantages} & \textbf{Inferences} \\
+\hline
+WebAgents Survey & Ning et al. & LFM web agent survey covering architectures, training, trust. & Comprehensive; systematic. & No technical novelty. & Research foundation. \\
+\hline
+RealWeb & Zhang, B., et al. & Chinese multimodal web benchmark with 11K+ instructions over 40 sites. & No human demos; strong visual grounding. & Language/ domain specificity. & Enables instruction following on real sites. \\
+\hline
+Agent-E & Abuelsaad, T., et al. & Web agent with hierarchical control, DOM denoising, change-based reasoning. & Strong performance; scalable design. & Complexity in deployment. & Sets design principles for robust agents. \\
+\hline
+IntentNav & Bhargava, R., et al. & NLUI web navigation using intent classification. 99.1\% accuracy with Naive Bayes. & Lightweight; high accuracy; voice support. & Domain-limited; static scraping. & Simple intent-driven model. \\
+\hline
+
+\end{tabular}}
+\end{frame}
+\begin{frame}{Literature Survey}
+\adjustbox{width=\textwidth,center}{\scriptsize
+\begin{tabular}{|p{1.2cm}|p{1cm}|p{2.3cm}|p{1.7cm}|p{1.7cm}|p{1.8cm}|}
+\hline
+WebNav & Srinivasan, T., et al. & Hierarchical ReAct system with dynamic labeling for voice navigation. & Modular reasoning; real-time DOM labeling. & Limited studies; struggles with ambiguity. & Promising multi-module AI framework. \\
+\hline
+
+
+WebSurfer & Hu, D., et al. & LLM agent with filtering, exemplar retrieval, feedback learning. & Good generalization; learns from feedback. & Low task SR; setup complexity. & Enables self-improving web agents. \\
+\hline
+Agentic Workflows & Singh, A., et al. & Framework enabling LLMs to reflect, plan, use tools, collaborate. & Boosts autonomy and output quality. & Early-stage; complex coordination. & Key step toward AGI via agentic design. \\
+\hline
+Dual-View & Kil, J., et al. & Uses HTML and screenshots for spatial context in web navigation. & Combines structure and visuals. & Needs screenshot model; higher resources. & Visual context boosts accuracy. \\
+\hline
+WEBLINX & Lù, X. H., et al. & Multi-turn web dialogue benchmark over 155 real sites. & Large, realistic dataset; dialog-focused. & Poor generalization; GPT-4V underperforms. & Tuned models excel on seen sites. \\
+
+\hline
+\end{tabular}}
+\end{frame}
+
+\section{Why ours is better}
+\begin{frame}
+    \frametitle{Why ours is better}
+    The purpose of this document is to capture, in natural language and at a functional
+level, the description and requirements of a Web Navigation Agent. The system
+autonomously interacts with websites to perform searching, browsing, data extraction,
+and structured information retrieval. Unlike static scrapers, it can dynamically handle
+interactive navigation flows such as clicking buttons, filling forms, scrolling, and
+traversing multi-step pages. The goal is to enable efficiency in information gathering,
+semantic search, and summarization across diverse websites.
+\end{frame}
+
+\section{Problem Statement}
+\begin{frame}
+\begin{center}
+    \huge \textbf{Problem Statement}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem Statement}
+\justifying
+Applying for jobs on multiple websites is often repetitive and time-consuming. Job seekers need to fill similar details repeatedly, while recruiters face challenges managing and analyzing large amounts of applicant data. Existing tools are not flexible enough to handle different job portals effectively. This project aims to develop an intelligent web navigation agent that automates job searches and applications, making the process faster, easier, and more efficient for both job seekers and recruiters.
+\end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+\section{Objectives}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Project Objectives}
+    \textbf{Objectives}
+    \begin{itemize}
+        \item Develop an intelligent Web Agent to automate the end-to-end job application process
+        \item Enable profile-job matching and prioritize relevant job listings
+        \item Automate filling application forms and uploading resumes
+        \item Track the status of submitted applications efficiently
+        \item Provide a user-friendly interface for job seekers to monitor and control automated applications
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Software Requirements Specification}
+\begin{frame}
+\begin{center}
+    \huge \textbf{Software Requirements Specification}
+\end{center}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{SRS - Introduction}
+\textbf{Purpose}
+\begin{itemize}
+    \item The purpose of this document is to capture, in natural language and at a functional level, the description and requirements of a Web Navigation Agent. 
+    \item The system autonomously interacts with websites to perform searching, browsing, data extraction, and structured information retrieval. 
+    \item Unlike static scrapers, it can dynamically handle interactive flows like form filling, button clicks, and multi-step navigation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Introduction}
+\textbf{Intended Audience}
+\begin{itemize}
+    \item \textbf{Job Seekers:} Use the system to automate job searches and application submissions across different portals.
+    
+    \item \textbf{Recruiters:} Benefit from faster access to structured applicant data and reduced manual screening work.
+    
+    \item \textbf{Developers:} Customize and maintain the agent for new job platforms or improved automation.
+    
+    \item \textbf{Researchers:} Analyze job trends and application data collected by the agent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Introduction}
+\textbf{Project Scope}
+\begin{itemize}
+    \item Automates browsing, data extraction, and summarization with minimal manual coding.
+    \item Enables semantic search and reasoning over extracted information.  
+    \item Helps in research, product comparison, job listings, or tutorials with minimal human effort.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Introduction}
+\textbf{Overview of Developer’s Responsibilities}
+\begin{itemize}
+    \item Implementation of reasoning, tool execution, and memory modules to enable step-by-step planning and adaptive decision-making.
+    \item Integration of Playwright/Selenium for navigation and interaction across dynamic websites, supporting actions such as scrolling, clicking, and form submission.
+    \item Development of HTML parsing and graph-based memory storage to represent visited pages and actions.
+    \item Enabling embeddings, vector store integration, and semantic search for efficient knowledge retrieval.
+    \item Providing summarization and reasoning capabilities using LLMs to ensure extracted content is transformed into human-readable insights.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{Product Perspective}
+\begin{itemize}
+    \item Most web scraping systems are limited to static HTML and need manual adjustments for interactive websites.
+    \item The Web Navigation Agent introduces an AI-powered, reasoning-based navigation framework.
+    \item It adaptively interacts with dynamic websites for structured and summarized information retrieval.
+    \item Minimizes manual intervention while improving efficiency.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{Product Functions}
+\begin{itemize}
+    \item Navigate dynamic websites through actions like clicking, scrolling, and form filling.
+    \item Extract and clean structured and unstructured data.
+    \item Generate embeddings and store content in vector databases for semantic search.
+    \item Summarize extracted data and answer queries using LLMs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{User Classes and Characteristics}
+\begin{itemize}
+    \item \textbf{Job Seekers:} Use the agent to search and apply for jobs automatically across portals.
+    \item \textbf{Recruiters:} Access organized applicant data for faster screening.
+    \item \textbf{Developers:} Maintain and enhance the system for better performance.
+    \item \textbf{Admins:} Monitor usage and manage system updates.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{Operating Environment}
+\begin{itemize}
+    \item Python 3.9+ runtime environment.
+    \item Supported on Linux, Windows, and MacOS platforms.
+    \item Browsers: Chromium and Firefox (via Playwright or Selenium).
+    \item Storage: JSON/SQLite for memory, FAISS/ChromaDB for semantic vectors.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{Design and Implementation Constraints}
+\begin{itemize}
+    \item Must remain website-agnostic, avoiding site-specific hardcoding.
+    \item Limited by available LLM API rate limits and computational costs.
+    \item Browser automation frameworks may impose resource overhead.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{User Documentation}
+\begin{itemize}
+    \item README file with setup and installation instructions.
+    \item Usage documentation for developers.
+    \item Example workflows and tutorials for end users.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{General Constraints}
+\begin{itemize}
+    \item System performance depends on network connectivity and website response times.
+    \item API usage costs and rate limits may restrict throughput and scalability.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Overall Description}
+\textbf{Assumptions and Dependencies}
+\begin{itemize}
+    \item Websites remain accessible and operational.
+    \item LLM APIs (Gemini, OpenAI, or local models) remain available and supported.
+    \item Vector database backends and storage systems are properly maintained.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{External Interface Requirements}
+%------------------------------------------------
+\begin{frame}
+\frametitle{SRS - External Interface Requirements}
+\textbf{User Interfaces}
+\begin{itemize}
+    \item Command-line interface (CLI) for developers.
+    \item Optional web dashboard for visualization of navigation paths and summaries.
+    \item Designed for clarity, consistency, and minimal training.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - External Interface Requirements}
+\textbf{Hardware Interfaces}
+\begin{itemize}
+    \item Runs on standard desktop/server hardware.  
+    \item Monitor for navigation logs and results.  
+    \item Keyboard and mouse for inputs (optional in web dashboard).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - External Interface Requirements}
+\textbf{Software Interfaces}
+\begin{itemize}
+    \item \textbf{Navigation:} Playwright/Selenium for browser automation.  
+    \item \textbf{Parsing:} BeautifulSoup or lxml.  
+    \item \textbf{Storage:} JSON/SQLite for memory and FAISS/ChromaDB for vector DB.  
+    \item \textbf{LLM APIs:} Gemini, OpenAI GPT, or local models.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - External Interface Requirements}
+\textbf{Communications Interfaces}
+\begin{itemize}
+    \item Secure communication via HTTPS.  
+    \item WebSocket protocols for real-time browser automation.  
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Hardware and Software Requirements}
+%------------------------------------------------
+\begin{frame}
+\frametitle{SRS - Hardware and Software Requirements}
+\textbf{Hardware Requirements}
+\begin{itemize}
+    \item \textbf{Server:} Minimum 8GB RAM, Dual-core CPU.  
+    \item Recommended: 16GB RAM, Quad-core CPU + GPU acceleration.  
+    \item \textbf{Client:} Standard PC with modern browser.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Hardware and Software Requirements}
+\textbf{Software Requirements}
+\begin{itemize}
+    \item Python 3.9 or above.  
+    \item Playwright/Selenium for navigation.  
+    \item FAISS/ChromaDB for vector search.  
+    \item SentenceTransformers or API-based embeddings.  
+    \item Client OS with browser (Windows/Linux/Mac).  
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Functional Requirements}
+%------------------------------------------------
+\begin{frame}
+\frametitle{SRS - Functional Requirements}
+\textbf{Dynamic Navigation}
+\begin{itemize}
+    \item Open and browse websites dynamically.  
+    \item Interact with elements (scroll, click, fill forms).  
+    \item Maintain multi-step navigation sessions.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Functional Requirements}
+\textbf{Knowledge Representation}
+\begin{itemize}
+    \item Store extracted content in structured formats (JSON/SQLite).  
+    \item Generate embeddings and store in FAISS/ChromaDB.  
+    \item Enable semantic search for advanced queries.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Functional Requirements}
+\textbf{LLM Reasoning and Summarization}
+\begin{itemize}
+    \item Use LLMs to decide navigation actions.  
+    \item Summarize extracted content into human-readable output.  
+    \item Provide Retrieval-Augmented responses with citations.  
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Other Nonfunctional Requirements}
+%------------------------------------------------
+\begin{frame}
+\frametitle{SRS - Other Nonfunctional Requirements}
+\textbf{Performance Requirements}
+\begin{itemize}
+    \item Handle multiple browsing sessions simultaneously.  
+    \item Summarize and extract within 30 seconds per task.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Other Nonfunctional Requirements}
+\textbf{Safety Requirements}
+\begin{itemize}
+    \item Operates in read-only mode to prevent harmful actions.  
+    \item Fail-safe mechanisms for safe session termination.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SRS - Other Nonfunctional Requirements}
+\textbf{Security \& Quality}
+\begin{itemize}
+    \item Secure API key storage and HTTPS communication.  
+    \item Sandboxed browsing sessions.  
+    \item Modularity, adaptability, availability, and usability ensured.  
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\subsection{Use Case Diagram}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Use Case Diagram}
+\centering
+\includegraphics[width=0.75\linewidth]{usecase.jpg} % replace with actual file
+\end{frame}
+
+\begin{frame}
+\frametitle{Class Diagram}
+\centering
+\includegraphics[width=0.75\linewidth]{class.jpg} % replace with actual file
+\end{frame}
+
+%------------------------------------------------
+\subsection{Dataset Design}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Dataset Design}
+\begin{itemize}
+    \item DOM snapshots + extracted text stored in JSON/SQLite.  
+    \item Vector DB (FAISS/ChromaDB) stores embeddings for semantic search.  
+    \item Supports training/evaluation datasets for navigation + summarization tasks.  
+\end{itemize}
+\end{frame}
+
+
+\section{Data Flow Diagram}
+%------------------------------------------------
+\begin{frame}
+\begin{center}
+    \huge \textbf{Data Flow Diagram}
+\end{center}
+\end{frame}
+%------------------------------------------------
+\subsection{Level 0}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Data Flow Diagram}
+\textbf{LEVEL 0:}
+\begin{figure}
+    \includegraphics[width=\linewidth]{level0.png}
+    \caption{Level 0 Data Flow Diagram}
+\end{figure}
+\end{frame}
+
+
+%------------------------------------------------
+\subsection{Level 1}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Data Flow Diagram}
+\textbf{LEVEL 1:}
+\begin{figure}
+    \includegraphics[width=0.7\linewidth]{DFD1.png}
+    \caption{Level 1 Data Flow Diagram}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Level 2}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Data Flow Diagram}
+\textbf{LEVEL 2:}
+\begin{figure}
+    \includegraphics[width=0.9\linewidth]{DFD2.png}
+    \caption{Level 2 Data Flow Diagram}
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\section{Module Description}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Module Description}
+\begin{itemize}
+    \item \textbf{Navigation Module}
+    \item \textbf{DOM Parsing \& Extraction Module}
+    \item \textbf{Knowledge Representation \& Semantic Search Module}
+    \item \textbf{Agent Module}
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\subsection{Navigation Module}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Navigation Module - Input}
+\begin{itemize}
+    \item \textbf{Input:} User query or job search request specifying parameters such as role, location, or keywords.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Navigation Module - Architecture}
+\textbf{Web Navigation and Interaction}
+\begin{itemize}
+    \item Uses Playwright/Selenium to open and browse dynamic job portals.
+    \item Automates actions such as login, search, scrolling, clicking, and form submission.
+    \item Maintains session states, handles cookies, and manages authentication for secure access.
+    \item Logs all navigation events to ensure repeatability and traceability.
+\end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Navigation Module - Algorithm} \begin{enumerate} \item \textbf{Input:} Job title or keyword query. \item \textbf{Open Job Portal:} Launch browser and load job site. \item \textbf{Perform Search:} Enter query and execute. \item \textbf{Navigate Pages:} Scroll, click, and move through listings. \item \textbf{Output:} Capture DOM structure and job listing data. \end{enumerate} \end{frame}
+
+\begin{frame}
+\frametitle{Navigation Module - Output}
+\begin{itemize}
+    \item \textbf{Output:} Captured DOM structures, navigation logs, and retrieved HTML pages that will be sent to the parsing module.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Navigation Module - Tools and Libraries}
+\textbf{Tools/Libraries:} Playwright or Selenium for browser automation, Python logging for session tracking, and Requests/Asyncio for efficient web interaction.
+\end{frame}
+
+%------------------------------------------------
+\subsection{DOM Parsing \& Extraction Module}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{DOM Parsing \& Extraction Module - Input}
+\begin{itemize}
+    \item \textbf{Input:} Raw HTML data and DOM snapshots generated by the Navigation Module.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{DOM Parsing \& Extraction Module - Architecture}
+\textbf{Parsing and Data Extraction}
+\begin{itemize}
+    \item Parses and cleans HTML content using BeautifulSoup or lxml to remove irrelevant tags, pop-ups, and ads.
+    \item Extracts key job information such as job title, company name, salary, location, and job description.
+    \item Ensures consistent data formatting for later storage and retrieval.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{DOM Parsing \& Extraction Module - Output}
+\begin{itemize}
+    \item \textbf{Output:} Structured job data stored temporarily in JSON format for further semantic processing.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{DOM Parsing \& Extraction Module - Tools and Libraries}
+\textbf{Tools/Libraries:} BeautifulSoup and lxml for parsing, Regular Expressions for content filtering, and Pandas for structuring extracted job information.
+\end{frame}
+
+%------------------------------------------------
+\subsection{Knowledge Representation \& Semantic Search Module}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Knowledge Representation \& Semantic Search Module - Input}
+\begin{itemize}
+    \item \textbf{Input:} Cleaned and structured job data from the DOM Parsing \& Extraction Module.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Knowledge Representation \& Semantic Search Module - Architecture}
+\textbf{Data Storage and Semantic Understanding}
+\begin{itemize}
+    \item Stores job data in JSON or SQLite databases with proper indexing for fast retrieval.
+    \item Converts job descriptions and titles into vector embeddings using pre-trained Transformer models.
+    \item Utilizes FAISS or ChromaDB for high-speed semantic search and similarity-based ranking.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Knowledge Representation \& Semantic Search Module - Output}
+\begin{itemize}
+    \item \textbf{Output:} Ranked and contextually relevant job listings based on semantic similarity and user intent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Knowledge Representation \& Semantic Search Module - Tools and Libraries}
+\textbf{Tools/Libraries:} SQLite for structured data storage, FAISS/ChromaDB for semantic search, SentenceTransformers for embeddings. 
+\end{frame}
+
+%------------------------------------------------
+\subsection{Agent Module}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Agent Module - Input}
+\begin{itemize}
+    \item \textbf{Input:} User query, structured prompt, and processed data from previous modules such as semantic representations and extracted content.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Agent Module - Architecture}
+\textbf{Tool-Augmented Agent Framework}
+\begin{itemize}
+    \item The system follows a \textbf{tool-augmented agent architecture} where the \textbf{Gemini LLM} acts as the central controller.
+    \item All tools are pre-registered with names, descriptions, and parameters.
+    \item When a user submits a query, it is combined with tool metadata to create a structured prompt.
+    \item The Gemini LLM applies \textbf{Chain-of-Thought (CoT)} reasoning to analyze the query, select the most appropriate tool, and generate the required parameters.
+    \item The \textbf{Tool Executor} dynamically runs the selected tool and sends the result back to Gemini for synthesis into a coherent final response.
+    \item This modular design ensures seamless coordination between reasoning and execution, enabling adaptive and efficient task handling.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Agent Module - Algorithm}
+\begin{enumerate}
+    \item \textbf{Input:} User query $Q$ and registered tool metadata $\{T_1, T_2, \ldots, T_n\}$.
+    \item \textbf{Prompt Construction:} Combine $Q$ with tool metadata to form a structured prompt object $P$.
+    \item \textbf{Reasoning:} The Gemini LLM performs Chain-of-Thought reasoning on $P$.
+    \item \textbf{Tool Selection:} Gemini selects the most relevant tool $T_i$ based on reasoning context.
+    \item \textbf{Parameter Extraction:} Determine required parameters for $T_i$.
+    \item \textbf{Tool Execution:} Tool Executor runs $T_i$ with extracted parameters to obtain result $R$.
+    \item \textbf{Response Synthesis:} Gemini integrates $R$ into a natural language output $A$.
+    \item \textbf{Output:} Final response $A$ is displayed to the user.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Agent Module - Output}
+\begin{itemize}
+    \item \textbf{Output:} Human-readable answers, intelligent summaries, and task results generated through reasoning and tool execution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Agent Module - Tools and Libraries}
+\textbf{Tools/Libraries:} Gemini API for reasoning, LangChain for agent orchestration, Python Asyncio for concurrent tool execution, and JSON schemas for structured prompt handling.
+\end{frame}
+
+\begin{frame}
+\frametitle{References} 
+\footnotesize{
+
+[1] R. Bhargava, R. Lobo, R. Shah, N. Shah, and S. Nair, “Easier Web Navigation Using Intent Classification, Web Scraping and NLP Approaches,” in \textit{2022 5th International Conference on Advances in Science and Technology (ICAST)}, 2022, pp. 286–290, doi: 10.1109/ICAST55766.2022.10039559. \\
+
+[2] T. Srinivasan and S. Patapati, “WebNav: An Intelligent Agent for Voice-Controlled Web Navigation,” arXiv:2503.13843, 2025. Available: https://arxiv.org/abs/2503.13843. \\
+
+[3] J. Kil, C. H. Song, B. Zheng, X. Deng, Y. Su, and W.-L. Chao, “Dual-View Visual Contextualization for Web Navigation,” in \textit{2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 2024, pp. 14445–14454, doi: 10.1109/CVPR52733.2024.01369. \\
+
+[4] D. Hu, J. Ge, W. Tang, G. Li, L. Li, and B. Wu, “WebSurfer: Enhancing LLM Agents with Web-Wise Feedback for Web Navigation,” in \textit{ICASSP 2025 - IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 2025, pp. 1–5, doi: 10.1109/ICASSP49660.2025.10889961. \\
+
+[5] L. Ning, Z. Liang, Z. Jiang, H. Qu, Y. Ding, W. Fan, X.-y. Wei, S. Lin, H. Liu, P. S. Yu, and Q. Li, “A Survey of WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation Models,” arXiv:2503.23350, 2025. Available: https://arxiv.org/abs/2503.23350. \\
+
+}
+\end{frame}
+
+\begin{frame}
+\section{References} 
+\footnotesize{
+
+[6] A. Singh, A. Ehtesham, S. Kumar, and T. T. Khoei, “Enhancing AI Systems with Agentic Workflows Patterns in Large Language Model,” in \textit{2024 IEEE World AI IoT Congress (AIIoT)}, 2024, pp. 527–532, doi: 10.1109/AIIoT61789.2024.10578990. \\
+
+[7] B. Zhang, S. Xiong, D. Sui, Y. Xu, Z. Tu, and D. Chu, “RealWeb: A Benchmark for Universal Instruction Following in Realistic Web Services Navigation,” in \textit{2024 IEEE International Conference on Web Services (ICWS)}, 2024, pp. 342–351, doi: 10.1109/ICWS62655.2024.00056. \\
+
+[8] T. Abuelsaad, D. Akkil, P. Dey, A. Jagmohan, A. Vempaty, and R. Kokku, “Agent-E: From Autonomous Web Navigation to Foundational Design Principles in Agentic Systems,” arXiv:2407.13032, 2024. Available: https://arxiv.org/abs/2407.13032. \\
+
+[9] Python Documentation. Available: \texttt{https://docs.python.org/3/}. Accessed: Oct. 2025. \\
+
+[10] Stack Overflow. Available: \texttt{https://www.stackoverflow.com/}. \\
+
+}
+\end{frame}
+
+
+\begin{frame}
+\centering
+\Huge \textbf{Thank You}
+\end{frame}
+\end{document}

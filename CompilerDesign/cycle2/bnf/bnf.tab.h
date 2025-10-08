@@ -44,16 +44,6 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
-/* "%code requires" blocks.  */
-#line 2 "bnf.y"
-
-    typedef struct AST {
-        char *nodeType;
-        int value;
-        struct AST *left, *right;
-    } AST;
-
-#line 57 "bnf.tab.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -64,8 +54,8 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    NUMBER = 258,                  /* NUMBER  */
-    UMINUS = 259                   /* UMINUS  */
+    NUM = 258,                     /* NUM  */
+    ID = 259                       /* ID  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -74,12 +64,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 10 "bnf.y"
+#line 59 "bnf.y"
 
-    int num;
-    AST *node;
+    int intval;
+    char* strval;
+    struct AST* AST;
 
-#line 83 "bnf.tab.h"
+#line 74 "bnf.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

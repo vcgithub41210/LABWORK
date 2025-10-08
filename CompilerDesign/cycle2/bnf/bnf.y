@@ -1,104 +1,96 @@
 
-%code requires {
-    typedef struct AST {
-        char *nodeType;
-        int value;
-        struct AST *left, *right;
-    } AST;
-}
-
-%union {
-    int num;
-    AST *node;
-}
-
-%token <num> NUMBER
-%type <node> expr
-
-%left '+' '-'
-%left '*' '/'
-%left UMINUS
-
 %{
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-int yylex(void);
-int yyerror(const char *s);
+typedef struct AST {
+    int intval;
+    char *strval;
+    int type;
+    struct AST *left, *right;
+} AST;
 
-AST* makeNode(char *type, AST *l, AST *r);
-AST* makeNum(int val);
-void printAST(AST *root, int lvl);
-int evalAST(AST *root);
+AST* makeNode(char* op, AST* left, AST* right){
+    AST* node = (AST*)malloc(sizeof(AST));
+    node->strval = strdup(op);
+    node->left = left;
+    node->right = right;
+    return node;
+}
+
+AST* makeIDLeaf(char* id){
+    AST* node = (AST*)malloc(sizeof(AST));
+    node->strval = strdup(id);
+    node->type = 0; // ID
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+
+AST* makeNUMLeaf(int val){
+    AST* node = (AST*)malloc(sizeof(AST));
+    node->intval = val;
+    node->type = 1; // NUM
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+void printTree(AST* root, int level) {
+    if (root == NULL) return;
+    for (int i = 0; i < level; i++) 
+        printf("  ");
+    if (root->left == NULL && root->right == NULL) {
+        if (root->type == 0)
+            printf("ID(%s)\n", root->strval);
+        else
+            printf("NUM(%d)\n", root->intval);
+    } else {
+        printf("OP(%s)\n", root->strval);
+    }
+    printTree(root->left, level + 1);
+    printTree(root->right, level + 1);
+}
+
+void yyerror(const char *s);
+int yylex();
 %}
 
-%%
+%union {
+    int intval;
+    char* strval;
+    struct AST* AST;
+}
 
-start: expr { 
-    printf("\nAST:\n"); 
-    printAST($1,0);
-    printf("\nResult: %d\n", evalAST($1)); 
-    return 0;
-};
-
-expr: expr '+' expr { $$ = makeNode("+",$1,$3); }
-    | expr '-' expr { $$ = makeNode("-",$1,$3); }
-    | expr '*' expr { $$ = makeNode("*",$1,$3); }
-    | expr '/' expr { $$ = makeNode("/",$1,$3); }
-    | '-' expr %prec UMINUS { $$ = makeNode("NEG",$2,NULL); }
-    | '(' expr ')' { $$ = $2; }
-    | NUMBER { $$ = makeNum($1); }
-;
+%token <intval> NUM
+%token <strval> ID
+%type <AST> E T
 
 %%
+start:
+      /* empty */
+    | start E '\n' { printTree($2,0); printf("\nParsed successfully\n"); }
+    ;
 
-AST* makeNode(char *type, AST *l, AST *r) {
-    AST *n = malloc(sizeof(AST));
-    n->nodeType = strdup(type);
-    n->value = 0;
-    n->left = l;
-    n->right = r;
-    return n;
+E:
+      E '+' E  { $$ = makeNode("+", $1, $3); }
+    | E '-' E  { $$ = makeNode("-", $1, $3); }
+    | E '=' E  { $$ = makeNode("=", $1, $3); }
+    | T        { $$ = $1; }
+    ;
+
+T:
+      '(' E ')'  { $$ = $2; }
+    | ID         { $$ = makeIDLeaf($1); }
+    | NUM        { $$ = makeNUMLeaf($1); }
+    ;
+%%
+void yyerror(const char *s) {
+   fprintf(stderr, "Error: %s\n", s);
+}
+int main(){
+  printf("Enter expression:\n");
+  yyparse();
+  return 0;
 }
 
-AST* makeNum(int val) {
-    AST *n = malloc(sizeof(AST));
-    n->nodeType = strdup("NUM");
-    n->value = val;
-    n->left = n->right = NULL;
-    return n;
-}
-
-void printAST(AST *root, int lvl) {
-    if (!root) return;
-    for (int i = 0; i < lvl; i++) printf("  ");
-    if (strcmp(root->nodeType, "NUM") == 0)
-        printf("NUM(%d)\n", root->value);
-    else
-        printf("%s\n", root->nodeType);
-    printAST(root->left, lvl + 1);
-    printAST(root->right, lvl + 1);
-}
-
-int evalAST(AST *root) {
-    if (!root) return 0;
-    if (strcmp(root->nodeType, "NUM") == 0) return root->value;
-    if (strcmp(root->nodeType, "+") == 0) return evalAST(root->left) + evalAST(root->right);
-    if (strcmp(root->nodeType, "-") == 0) return evalAST(root->left) - evalAST(root->right);
-    if (strcmp(root->nodeType, "*") == 0) return evalAST(root->left) * evalAST(root->right);
-    if (strcmp(root->nodeType, "/") == 0) return evalAST(root->left) / evalAST(root->right);
-    if (strcmp(root->nodeType, "NEG") == 0) return -evalAST(root->left);
-    return 0;
-}
-
-int main() {
-    printf("Enter arithmetic expression:\n");
-    yyparse();
-    return 0;
-}
-
-int yyerror(const char *s) {
-    printf("Error: %s\n", s);
-    return 0;
-}
